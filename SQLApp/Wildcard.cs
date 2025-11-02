@@ -10,7 +10,7 @@ namespace SQLApp {
 
         public Wildcard() { }
 
-
+        //giver adgang til at søge men kun i et view. 
         public void WildcardTitle(string connectionstring, string searchterm)
         {
             using (var sqlConn = new SqlConnection(connectionstring))
@@ -42,6 +42,7 @@ namespace SQLApp {
                 }
             }
         }
+        //samme bare i name view
         public void WildcardName(string connectionstring, string searchterm)
         {
             using (var sqlConn = new SqlConnection(connectionstring))
@@ -61,7 +62,7 @@ namespace SQLApp {
                 }
             }
         }
-
+        //kan opdaterer via stored procedure
         public void UpdateMovie(string adminstring,Title updatedTitle, int id) //Lav en bruger der har et id der findes i Title tabellen, tilføj derefter titlen så den kan opdaterer
         {
             using (var sqlConn = new SqlConnection(adminstring))
@@ -86,6 +87,7 @@ namespace SQLApp {
                 }
             }
         }
+        //kan tilføje via stored procedure i title tabellen
         public void AddMovie(string adminstring, Title newMovie) //Lav en bruger der har et id der findes i Title tabellen, tilføj derefter titlen så den kan opdaterer
         {
             using (var sqlConn = new SqlConnection(adminstring))
@@ -109,6 +111,7 @@ namespace SQLApp {
                 }
             }
         }
+        //kan tilføje via stored procedure i name tabellen
         public void AddName(string adminstring, Name name ) //Lav en bruger der har et id der findes i Title tabellen, tilføj derefter titlen så den kan opdaterer
         {
             using (var sqlConn = new SqlConnection(adminstring))
