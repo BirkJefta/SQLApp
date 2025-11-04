@@ -6,7 +6,7 @@ string connectionStringSearch = "Server=BIRKPC;Database=IMDB;User Id=DataReaderI
 string connectionStringAdmin = "Server=BIRKPC;Database=IMDB;User Id=AdminIMDB;Password=123456789; TrustServerCertificate=True;"; //kan via stored procedures skrive til databasen, Add movie og name og update en titel
 
 //id på den title der skal opdateres
-int testIdTitle = 38496050;
+int testIdTitle = 38496052;
 
 Wildcard wc = new Wildcard();
 
@@ -50,6 +50,9 @@ Name name = new Name(
     deathYear: deathYearParsed
 );
 
+
+Console.WriteLine("Tilføj en ny titel til databasen.");
+
 Console.WriteLine("indtast id på titletype (1-11):");
 List<string> types = new List<string>()
         {
@@ -75,8 +78,8 @@ string typeIdInput = null;
 int typeIdParsed;
 
 typeIdInput = Console.ReadLine();
-while (typeIdInput.IsNullOrEmpty()) 
-{ 
+while (typeIdInput.IsNullOrEmpty())
+{
     Console.WriteLine("indtast id på titletype (1-11):");
     typeIdInput = Console.ReadLine();
     typeIdParsed = int.Parse(typeIdInput);
@@ -168,9 +171,7 @@ Title title = new Title(
 
 
 
-Console.WriteLine("Indsæt søgeord:");
-string? søgeord = Console.ReadLine();
-wc.WildcardTitle(connectionStringSearch, søgeord ?? "");
+
 
 // fungerer ligesom med indsæt, men vi hardcoder det her, da det er repetitivt at lave det hele igen
 Title updatedTitle = new Title(
@@ -194,12 +195,16 @@ wc.WildcardName(connectionStringSearch, name.PrimaryName);
 //tilføjer en ny movie til databasen
 wc.AddMovie(connectionStringAdmin, title);
 
+Console.WriteLine("Indsæt søgeord til titel:");
+string? søgeord = Console.ReadLine();
+wc.WildcardTitle(connectionStringSearch, søgeord ?? "");
+
 //opdaterer en eksisterende movie i databasen baseret på testidtitle i toppen
 Console.WriteLine("opdaterer filmen");
 wc.UpdateMovie(connectionStringAdmin, updatedTitle, testIdTitle);
 
 //sletter filmen
 Console.WriteLine("sletter den testfilm der blev opdateret");
-wc.DeleteMovie(connectionStringAdmin, testIdTitle);
+//wc.DeleteMovie(connectionStringAdmin, testIdTitle);
 
 
