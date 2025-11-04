@@ -57,7 +57,12 @@ namespace SQLApp {
                     {
                         while (reader.Read())
                         {
-                            Console.WriteLine(reader["PrimaryName"].ToString());
+                            Console.WriteLine(
+                                         $"Id: {reader["Id"]}, " +
+                                         $"PrimaryName: {reader["PrimaryName"]}, " +
+                                         $"Birth year: {reader["BirthYear"]}, " +
+                                         $"Death Year: {reader["DeathYear"]}"
+                            );
                         }
                     }
                 }
@@ -83,7 +88,7 @@ namespace SQLApp {
 
                     sqlConn.Open();
                     int rowsAffected = sqlCmd.ExecuteNonQuery();
-                    Console.WriteLine($"{rowsAffected} row(s) updated.");
+                    //Console.WriteLine($"{rowsAffected} row(s) updated.");
 
                 }
             }
@@ -107,7 +112,7 @@ namespace SQLApp {
 
                     sqlConn.Open();
                     int rowsAffected = sqlCmd.ExecuteNonQuery();
-                    Console.WriteLine($"{rowsAffected} row(s) updated.");
+                    //Console.WriteLine($"{rowsAffected} row(s) updated.");
 
                 }
             }
@@ -128,12 +133,29 @@ namespace SQLApp {
 
                     sqlConn.Open();
                     int rowsAffected = sqlCmd.ExecuteNonQuery();
-                    Console.WriteLine($"{rowsAffected} row(s) updated.");
+                    //Console.WriteLine($"{rowsAffected} row(s) updated.");
 
                 }
             }
         }
+        public void DeleteMovie(string adminstring, int deleteId) //Slet movie med id via stored procedure
+        {
+            using (var sqlConn = new SqlConnection(adminstring))
+            {
 
+                using (var sqlCmd = new SqlCommand("DeleteMovie", sqlConn))
+                {
+                    sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlCmd.Parameters.AddWithValue("@Id", deleteId );
+
+                    sqlConn.Open();
+                    int rowsAffected = sqlCmd.ExecuteNonQuery();
+                    Console.WriteLine("movie deleted");
+                    //Console.WriteLine($"{rowsAffected} row(s) updated.");
+
+                }
+            }
+        }
 
     }
 }
