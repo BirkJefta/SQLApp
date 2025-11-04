@@ -194,7 +194,7 @@ wc.WildcardName(connectionStringSearch, name.PrimaryName);
 
 //tilføjer en ny movie til databasen
 wc.AddMovie(connectionStringAdmin, title);
-
+ 
 Console.WriteLine("Indsæt søgeord til titel:");
 string? søgeord = Console.ReadLine();
 wc.WildcardTitle(connectionStringSearch, søgeord ?? "");
