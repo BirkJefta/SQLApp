@@ -14,6 +14,8 @@ namespace SQLApp {
         public short? EndYear { get; set; }
         public int? RuntimeMinutes { get; set; }
 
+
+
         public Title(int typeId, string primaryTitle, string? originalTitle, bool isAdult, short? startyear, short? endyear, int? runtime ) 
         {
             TypeId = typeId;
