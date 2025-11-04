@@ -36,7 +36,8 @@ namespace SQLApp {
                                             $"StartYear: {reader["StartYear"]}, " +
                                             $"EndYear: {reader["EndYear"]}, " +
                                             $"RuntimeMinutes: {reader["RuntimeMinutes"]}"
-                                            );
+                                           
+                            );
                         }
                     }
                 }

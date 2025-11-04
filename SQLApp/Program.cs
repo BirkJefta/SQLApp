@@ -24,7 +24,7 @@ Title newmovie = new Title(
 
 Title updatedTitle = new Title(
     typeId: 1,
-    primaryTitle: "Updated Movie Title",
+    primaryTitle: "Updated Movie Title ",
     originalTitle: "Updated Original Title",
     isAdult: false,
     startyear: 2024,
