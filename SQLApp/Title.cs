@@ -26,5 +26,12 @@ namespace SQLApp {
             EndYear = endyear;
             RuntimeMinutes = runtime;
         }
+
+
+        public override string ToString()
+        {
+            return $"TypeId: {TypeId} Titel: {PrimaryTitle} ({StartYear}-{EndYear}), Originaltitel: {OriginalTitle}, Varighed: {RuntimeMinutes} min, Voksenfilm: {IsAdult}";
+        }
     }
 }
+
