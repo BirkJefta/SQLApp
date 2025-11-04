@@ -205,6 +205,7 @@ wc.UpdateMovie(connectionStringAdmin, updatedTitle, testIdTitle);
 
 //sletter filmen
 Console.WriteLine("sletter den testfilm der blev opdateret");
-//wc.DeleteMovie(connectionStringAdmin, testIdTitle);
+wc.DeleteMovie(connectionStringAdmin, testIdTitle);
+Console.WriteLine("slettet");
 
 
